@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Восстановление пароля</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/resetpass.css') }}">
+</head>
+<body>
+    <form id="resetPasswordForm" action="/reset_password" method="POST">
+        <input type="hidden" name="_method" value="PUT">
+        <h1>Восстановление пароля</h1>
+        <p id="successMessage" class="success-message"></p>
+        <p id="errorMessage" class="error-message"></p>
+        <label for="phone_number">Телефонный номер при регистрации:</label>
+        <input type="tel" id="phone_number" name="phone_number" required placeholder="+7XXXXXXXXXX"><br><br>
+        <label for="medical_policy">Медицинский полис при регистрации:</label>
+        <input type="text" id="medical_policy" name="medical_policy" required placeholder="XXX-XXX-XXX XX"><br><br>
+        <label for="new_password">Новый пароль:</label>
+        <input type="password" id="new_password" name="new_password" required placeholder="Ваш новый пароль"><br><br>
+        <button type="submit" name="refresh" id="refresh">Обновить пароль</button>
+        <a href="/login">Вернуться на страницу входа</a>
+    </form>
+     <script>
+        document.getElementById('resetPasswordForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+            let phone_number = document.getElementById('phone_number').value;
+            let medical_policy = document.getElementById('medical_policy').value;
+            let new_password = document.getElementById('new_password').value;
+
+            let xhr = new XMLHttpRequest();
+            xhr.open('PUT', '/reset_password', true);
+            xhr.setRequestHeader('Content-Type', 'application/json');
+
+            xhr.onload = function() {
+                if (xhr.status === 200) {
+                    document.getElementById('successMessage').innerText = 'Пароль успешно сброшен';
+                    document.getElementById('errorMessage').innerText = '';
+                } else {
+                    let response = JSON.parse(xhr.responseText);
+                    document.getElementById('errorMessage').innerText = response.error || 'Что-то пошло не так';
+                    document.getElementById('successMessage').innerText = '';
+                }
+            };
+
+            xhr.onerror = function() {
+                document.getElementById('errorMessage').innerText = 'Ошибка при отправке запроса';
+                document.getElementById('successMessage').innerText = '';
+            };
+
+            xhr.send(JSON.stringify({
+                phone_number: phone_number,
+                medical_policy: medical_policy,
+                new_password: new_password
+            }));
+        });
+     </script>
+</body>
+</html>

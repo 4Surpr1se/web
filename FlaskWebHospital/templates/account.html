@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Информация о пользователе</title>
+  <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styleaccount.css') }}">
+</head>
+<body>
+  <div class="header">
+    <img src="{{ url_for('static', filename='images/polytech_logo_main_RGB.png') }}" alt="logo">
+    <h1>Личный кабинет</h1>
+    <div class="header-links">
+        <a class="header-link" href="{{ url_for('make_appointments') }}">Записаться на прием</a>
+        <a class="header-link" href="{{ url_for('logout') }}">На главную</a>
+    </div>
+  </div>
+
+  <div class="user-info">
+    <h2>Личная информация</h2>
+    <p><b>Номер телефона:</b> {{ user.phone }}</p>
+    <p><b>Медицинская полис:</b> {{ user.policy }}</p>
+    <p><b>ФИО:</b> {{ user.fullname }}</p>
+    <p><b>Пол:</b> {{ user.gender }}</p>
+    <p><b>Дата рождения:</b> {{ user.birthdate }}</p>
+  </div>
+
+  <div class="appointments">
+    <h2>Медицинские записи</h2>
+
+    {% if appointments %}
+      {% for appointment in appointments %}
+        <div class="appointment">
+          <p><b>Дата и время:</b> {{ appointment.date_and_time }}</p>
+          <p><b>Доктор:</b> {{ appointment.doctor_name }}</p>
+          <p><b>Специальность:</b> {{ appointment.field_of_specialization }}</p>
+          <p><b>Стаж:</b> {{ appointment.experience }} лет</p>
+          <p><b>Кабинет:</b> {{ appointment.cabinet_number }}</p>
+          <p><b>Лечение:</b> {{ appointment.treatment }}</p>
+          <p><b>Диагноз:</b> {{ appointment.diagnosis }}</p>
+          <form method='post'>
+            <input type='hidden' name='appointment_id' value='{{ appointment.id }}'>
+            <button type='submit' name='delete_appointment'>Удалить запись</button>
+          </form>
+        </div>
+        <hr>
+      {% endfor %}
+    {% else %}
+      <p>Нет активных записей</p>
+    {% endif %}
+  </div>
+
+  {% if success_message %}
+    <div class="success-message">
+      <p>{{ success_message }}</p>
+    </div>
+  {% endif %}
+
+  {% if error_message %}
+    <div class="error-message">
+      <p>{{ error_message }}</p>
+    </div>
+  {% endif %}
+
+</body>
+</html>

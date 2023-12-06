@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Регистрация</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/styleregister.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>Регистрация пациента</h1>
+        <div class="message">
+        {% if message %}
+            <p>{{ message }}</p>
+        {% endif %}
+        </div>
+        <form method="POST">
+            <div class="form-group">
+                <label>ФИО:</label>
+                <input type="text" name="fullname" required placeholder="Иванов Иван Иванович">
+            </div>
+
+            <div class="form-group">
+                <label>Пол:</label>
+                <select name="gender" required>
+                    <option value="" disabled selected>Выберите пол</option>
+                    <option value="Мужской">Мужской</option>
+                    <option value="Женский">Женский</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label>Дата рождения:</label>
+                <input type="date" name="birthdate" required>
+            </div>
+
+            <div class="form-group">
+                <label>Телефонный номер:</label>
+                <input type="tel" name="phone" pattern="\+7[0-9]{10}" value="+7" required>
+            </div>
+
+            <div class="form-group">
+                <label>Пароль:</label>
+                <input type="password" name="password" required>
+            </div>
+
+            <div class="form-group">
+                <label>Медицинский полис:</label>
+                <input type="text" name="policy" required placeholder="XXX-XXX-XXX XX">
+            </div>
+
+            <button type="submit">Зарегистрироваться</button>
+            <a href="/login">На страницу входа</a>
+        </form>
+    </div>
+</body>
+</html>

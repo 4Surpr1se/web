@@ -1,0 +1,105 @@
+/* Общие стили */
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+  }
+  
+  body {
+	font-family: Arial, sans-serif;
+	background-color: #f7f7f7;
+  }
+  
+  .container {
+	max-width: 500px;
+	margin: 50px auto;
+	padding: 20px;
+	background-color: #fff;
+	border-radius: 5px;
+	box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+  }
+  
+  h1 {
+	text-align: center;
+	margin-bottom: 30px;
+	color: #333;
+  }
+  
+  /* Стили для формы */
+  .form-group {
+	margin-bottom: 20px;
+  }
+  
+  label {
+	display: block;
+	margin-bottom: 5px;
+	font-weight: bold;
+  }
+  
+  input[type="text"],
+  input[type="date"],
+  input[type="password"],
+  input[type="tel"] {
+	width: 100%;
+	padding: 10px;
+	font-size: 16px;
+	border-radius: 5px;
+	border: 1px solid #ccc;
+  }
+  
+  input[type="text"]:focus,
+  input[type="date"]:focus,
+  input[type="password"]:focus,
+  input[type="tel"]:focus {
+	border-color: #00bcd4;
+	outline: none;
+  }
+  
+  select {
+	width: 100%;
+	padding: 10px;
+	font-size: 16px;
+	border-radius: 5px;
+	border: 1px solid #ccc;
+  }
+  
+  select:focus {
+	border-color: #00bcd4;
+	outline: none;
+  }
+  
+  button[type="submit"] {
+	display: block;
+	margin: 0 auto;
+	padding: 10px 20px;
+	font-size: 18px;
+	background-color: #00bcd4;
+	color: #fff;
+	border: none;
+	border-radius: 5px;
+	cursor: pointer;
+  }
+  
+  button[type="submit"]:hover {
+	background-color: #008c9e;
+  }
+  
+  a {
+	display: block;
+	margin-top: 20px;
+	text-align: center;
+	color: #00bcd4;
+  }
+  
+  a:hover {
+	color: #008c9e;
+  }
+  
+  /* Сообщения об ошибках и успешной регистрации */
+  p {
+	margin-bottom: 10px;
+	font-size: 16px;
+	text-align: center;
+	font-weight: bold;
+  }
+  

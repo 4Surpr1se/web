@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Вход</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/stylelogin.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>Вход в личный кабинет</h1>
+        <form method="POST">
+            <div class="form-group">
+                <label>Номер телефона:</label>
+                <input type="tel" name="phone" pattern="\+7[0-9]{10}" value="+7" required>
+            </div>
+            <div class="form-group">
+                <label>Пароль:</label>
+                <input type="password" name="password" required>
+            </div>
+            <div class="form-group">
+                <button type="submit" name="login">Войти</button>
+            </div>
+        </form>
+        {% if message %}
+            <p style="color: red;">{{ message }}</p>
+        {% endif %}
+        <form action="/resetpassword">
+            <div class="form-group">
+                <button type="submit">Восстановить пароль</button>
+            </div>
+        </form>
+        <a href="/registration">Зарегистрироваться</a>
+    </div>
+</body>
+</html>

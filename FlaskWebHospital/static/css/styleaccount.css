@@ -1,0 +1,116 @@
+/* Общий стиль для всей страницы */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+
+  body {
+    font-family: Arial, sans-serif;
+  }
+
+  .header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #1f42b3;
+    padding: 20px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+
+  .header img {
+    height: 50px;
+    filter: invert();
+  }
+
+  .header h1 {
+    font-size: 24px;
+    text-align: center;
+    margin: 0;
+    flex-grow: 1;
+    color: white;
+  }
+
+  .header-links {
+    display: flex;
+  }
+
+  .header-link {
+    display: inline-block;
+    margin-left: 20px;
+    color: #ffffff;
+    text-decoration: none;
+    font-size: 18px;
+  }
+
+  .header-link:hover {
+    color: #0f0;
+  }
+
+  .button {
+    float: right;
+    width: 33%;
+    padding: 20px;
+  }
+
+  .button a {
+    display: block;
+    background-color: #4285F4;
+    color: #fff;
+    text-align: center;
+    text-decoration: none;
+    padding: 10px;
+    border-radius: 5px;
+  }
+
+  /* Информация о пользователе */
+  .user-info {
+    width: 33%;
+    float: left;
+    padding: 20px;
+
+  }
+
+  .user-info h2 {
+    margin-bottom: 10px;
+    color: #1f42b3;
+  }
+
+  .user-info p {
+    margin-bottom: 5px;
+    border: 1px solid #d7d9dd;
+  }
+
+  /* Медицинские записи */
+  .appointments {
+    width: 58.5%;
+    float: right;
+    padding: 20px;
+  }
+
+  .appointments h2 {
+    margin-bottom: 10px;
+  }
+
+  .appointment {
+    margin-bottom: 20px;
+  }
+
+  .appointment p {
+    margin-bottom: 5px;
+  }
+
+  form {
+    margin-top: 10px;
+  }
+
+  button {
+    background-color: #4285F4;
+    color: #fff;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+
+
